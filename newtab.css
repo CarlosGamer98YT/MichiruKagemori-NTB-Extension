@@ -225,6 +225,8 @@ button, .btn {
 
 /* Barra de búsqueda */
 .search-widget {
+  position: relative;
+  z-index: 20;
   width: 100%;
   max-width: 650px;
   height: 58px;

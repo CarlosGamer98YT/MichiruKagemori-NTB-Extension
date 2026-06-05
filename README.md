@@ -35,16 +35,16 @@ Since this is a developer extension, you must load it as an unpacked directory i
 ### 1. Enable Developer Mode in your Browser
 - **Brave:** Navigate to `brave://extensions/`
 - **Chrome:** Navigate to `chrome://extensions/`
-- Toggle the **"Developer mode"** (Modo desarrollador) switch in the top-right corner.
+- Toggle the **"Developer mode"** switch in the top-right corner.
 
 ### 2. Load the Extension
-1. Click the **"Load unpacked"** (Cargar descomprimida) button in the top-left corner.
+1. Click the **"Load unpacked"** button in the top-left corner.
 2. Select the extension directory: `/home/carlos/Documents/antigravity/Michiru-NTB-Extension`.
 3. The extension card **"Michiru Kagemori New Tab"** will appear on the dashboard.
 
 ### 3. Open a New Tab
 - Open a new tab (`Ctrl + T`).
-- If Brave/Chrome displays a popup asking *"Is this the new tab page you expected?"*, click **"Keep changes"** (Conservar cambios) to activate it.
+- If Brave/Chrome displays a popup asking *"Is this the new tab page you expected?"*, click **"Keep changes"** to activate it.
 
 ### 4. Configure Your API Credentials
 1. Click the settings cog icon (⚙️) in the bottom-right corner.
