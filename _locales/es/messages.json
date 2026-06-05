@@ -1,0 +1,149 @@
+{
+  "extName": {
+    "message": "Michiru Kagemori Nueva Pestaña"
+  },
+  "extDesc": {
+    "message": "Reemplaza el fondo de la página de Nueva Pestaña con hermosas imágenes aleatorias de Michiru Kagemori desde Danbooru y Gelbooru."
+  },
+  "tabTitle": {
+    "message": "Nueva Pestaña"
+  },
+  "searchPlaceholder": {
+    "message": "Buscar en la web..."
+  },
+  "searchTooltip": {
+    "message": "Cambiar motor de búsqueda"
+  },
+  "artistLabel": {
+    "message": "Artista:"
+  },
+  "artistLoading": {
+    "message": "Cargando..."
+  },
+  "viewOriginalTooltip": {
+    "message": "Ver imagen original"
+  },
+  "viewOriginalText": {
+    "message": "Original"
+  },
+  "toggleBgTooltip": {
+    "message": "Activar/Desactivar imágenes de fondo (ON/OFF)"
+  },
+  "refreshTooltip": {
+    "message": "Siguiente imagen (Refrescar)"
+  },
+  "settingsTooltip": {
+    "message": "Configuración"
+  },
+  "settingsTitle": {
+    "message": "Configuración"
+  },
+  "closeTooltip": {
+    "message": "Cerrar"
+  },
+  "imageSourcesTitle": {
+    "message": "Fuentes de Imágenes"
+  },
+  "apiCredentialsTitle": {
+    "message": "Credenciales de APIs"
+  },
+  "danbooruUsernamePlaceholder": {
+    "message": "Usuario (Login)"
+  },
+  "danbooruApiKeyPlaceholder": {
+    "message": "API Key / Token"
+  },
+  "gelbooruUserIdPlaceholder": {
+    "message": "User ID"
+  },
+  "gelbooruApiKeyPlaceholder": {
+    "message": "API Key / Token"
+  },
+  "contentFilterTitle": {
+    "message": "Filtro de Contenido"
+  },
+  "safeSearchLabel": {
+    "message": "Búsqueda Segura (Safe Search)"
+  },
+  "safeSearchHelp": {
+    "message": "Filtra contenido cuestionable o explícito. Desactivarlo puede mostrar imágenes para adultos."
+  },
+  "visualCustomizationTitle": {
+    "message": "Personalización Visual"
+  },
+  "blurLabel": {
+    "message": "Desenfoque de Fondo:"
+  },
+  "opacityLabel": {
+    "message": "Opacidad del Filtro:"
+  },
+  "imageFitLabel": {
+    "message": "Ajuste de Imagen:"
+  },
+  "fitOptionContain": {
+    "message": "Ajustar (Sin recortar)"
+  },
+  "fitOptionCover": {
+    "message": "Rellenar (Recortar bordes)"
+  },
+  "customTagsTitle": {
+    "message": "Etiquetas Personalizadas"
+  },
+  "customTagsPlaceholder": {
+    "message": "Ej. kagemori_michiru solo"
+  },
+  "customTagsHelp": {
+    "message": "Por defecto busca a Michiru Kagemori. Puedes añadir etiquetas adicionales separadas por espacio."
+  },
+  "cacheManagementTitle": {
+    "message": "Gestión de Caché"
+  },
+  "cacheCountLabel": {
+    "message": "Imágenes en caché:"
+  },
+  "clearCacheBtn": {
+    "message": "Vaciar Caché"
+  },
+  "saveSettingsBtn": {
+    "message": "Guardar y Aplicar"
+  },
+  "addShortcutTitle": {
+    "message": "Añadir Acceso Directo"
+  },
+  "editShortcutTitle": {
+    "message": "Editar Acceso Directo"
+  },
+  "shortcutNameLabel": {
+    "message": "Nombre"
+  },
+  "shortcutNamePlaceholder": {
+    "message": "Ej. GitHub"
+  },
+  "shortcutUrlLabel": {
+    "message": "Dirección URL"
+  },
+  "shortcutUrlPlaceholder": {
+    "message": "Ej. https://github.com"
+  },
+  "deleteBtn": {
+    "message": "Eliminar"
+  },
+  "cancelBtn": {
+    "message": "Cancelar"
+  },
+  "saveBtn": {
+    "message": "Guardar"
+  },
+  "sourceOffline": {
+    "message": "Desconectado"
+  },
+  "unknownArtist": {
+    "message": "Desconocido"
+  },
+  "errorSelectSource": {
+    "message": "Debes seleccionar al menos una fuente de imágenes (Danbooru o Gelbooru)."
+  },
+  "confirmClearCache": {
+    "message": "¿Seguro que quieres vaciar el caché de imágenes? Se descargarán nuevas."
+  }
+}

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nueva Pestaña</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="newtab.css">
+</head>
+<body>
+  <!-- Contenedores para transiciones de fondo -->
+  <div id="bg-active" class="bg-layer">
+    <div class="bg-ambient"></div>
+    <div class="bg-foreground"></div>
+  </div>
+  <div id="bg-next" class="bg-layer">
+    <div class="bg-ambient"></div>
+    <div class="bg-foreground"></div>
+  </div>
+  <div class="bg-overlay"></div>
+
+  <!-- Contenedor principal de la interfaz -->
+  <main class="container">
+    
+    <!-- Sección superior: Reloj y Fecha -->
+    <header class="header">
+      <div id="clock-widget" class="clock-widget">
+        <h1 id="clock-time" class="clock-time">00:00:00</h1>
+        <p id="clock-date" class="clock-date">Cargando fecha...</p>
+      </div>
+    </header>
+
+    <!-- Sección central: Barra de búsqueda y accesos directos -->
+    <section class="main-content">
+      
+      <!-- Widget de búsqueda -->
+      <div id="search-widget" class="search-widget glass-panel">
+        <form id="search-form" class="search-form">
+          <div class="search-engine-selector">
+            <button type="button" id="current-engine-btn" class="engine-btn" title="Cambiar motor de búsqueda" data-i18n-title="searchTooltip">
+              <span id="current-engine-icon">🔍</span>
+            </button>
+            <div id="engine-dropdown" class="engine-dropdown glass-panel hidden">
+              <button type="button" class="engine-option" data-engine="google">
+                <span class="engine-icon">🌐</span> Google
+              </button>
+              <button type="button" class="engine-option" data-engine="brave">
+                <span class="engine-icon">🦁</span> Brave
+              </button>
+              <button type="button" class="engine-option" data-engine="ddg">
+                <span class="engine-icon">🦆</span> DuckDuckGo
+              </button>
+            </div>
+          </div>
+          <input type="text" id="search-input" placeholder="Buscar en la web..." data-i18n-placeholder="searchPlaceholder" autocomplete="off" autofocus>
+          <button type="submit" class="search-submit-btn">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Cuadrícula de accesos directos -->
+      <div id="shortcuts-container" class="shortcuts-container">
+        <div id="shortcuts-grid" class="shortcuts-grid">
+          <!-- Se cargan dinámicamente -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Sección inferior: Información de la imagen y controles -->
+    <footer class="footer">
+      
+      <!-- Información de la imagen (Esquina inferior izquierda) -->
+      <div id="image-info-widget" class="image-info-widget glass-panel">
+        <div class="image-info-header">
+          <span class="image-source-badge" id="image-source-badge">Michiru Kagemori</span>
+          <span class="image-score" id="image-score">★ 0</span>
+        </div>
+        <div class="image-info-body">
+          <p class="image-artist-label" data-i18n="artistLabel">Artista:</p>
+          <a href="#" id="image-artist-link" class="image-artist-link" data-i18n="artistLoading" target="_blank">Cargando...</a>
+        </div>
+        <div class="image-info-actions">
+          <a href="#" id="image-view-original" class="action-link" target="_blank" title="Ver imagen original" data-i18n-title="viewOriginalTooltip">
+            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            <span data-i18n="viewOriginalText">Original</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Botones de control (Esquina inferior derecha) -->
+      <div class="controls-widget">
+        <button id="toggle-bg-btn" class="control-btn glass-panel" title="Activar/Desactivar imágenes (ON/OFF)" data-i18n-title="toggleBgTooltip">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" id="toggle-bg-icon">
+            <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+            <line x1="12" y1="2" x2="12" y2="12"></line>
+          </svg>
+        </button>
+        <button id="refresh-btn" class="control-btn glass-panel" title="Siguiente imagen (Refrescar)" data-i18n-title="refreshTooltip">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" id="refresh-icon">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <polyline points="1 20 1 14 7 14"></polyline>
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+          </svg>
+        </button>
+        <button id="settings-btn" class="control-btn glass-panel" title="Configuración" data-i18n-title="settingsTooltip">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </div>
+
+    </footer>
+  </main>
+
+  <!-- Panel lateral de Configuración (Drawer) -->
+  <aside id="settings-drawer" class="settings-drawer glass-panel hidden">
+    <div class="drawer-header">
+      <h2 data-i18n="settingsTitle">Configuración</h2>
+      <button id="close-settings-btn" class="close-btn" title="Cerrar" data-i18n-title="closeTooltip">✕</button>
+    </div>
+    
+    <div class="drawer-body">
+      <!-- Sección de APIs -->
+      <div class="settings-group">
+        <h3 data-i18n="imageSourcesTitle">Fuentes de Imágenes</h3>
+        <label class="checkbox-container">
+          <input type="checkbox" id="source-danbooru" checked>
+          <span class="checkmark"></span>
+          Danbooru
+        </label>
+        <label class="checkbox-container">
+          <input type="checkbox" id="source-gelbooru" checked>
+          <span class="checkmark"></span>
+          Gelbooru
+        </label>
+      </div>
+
+      <!-- Credenciales de API -->
+      <div class="settings-group">
+        <h3 data-i18n="apiCredentialsTitle">Credenciales de APIs</h3>
+        <div style="display: flex; flex-direction: column; gap: 8px; border-left: 2px solid var(--clr-cyan); padding-left: 10px;">
+          <h4 style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--clr-cyan);">Danbooru</h4>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" id="danbooru-username-input" placeholder="Usuario (Login)" data-i18n-placeholder="danbooruUsernamePlaceholder" style="flex: 1; padding: 6px 10px; font-size: 0.8rem; height: 32px;">
+            <input type="text" id="danbooru-api-key-input" placeholder="API Key / Token" data-i18n-placeholder="danbooruApiKeyPlaceholder" style="flex: 2; padding: 6px 10px; font-size: 0.8rem; height: 32px;">
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; border-left: 2px solid var(--clr-pink); padding-left: 10px; margin-top: 4px;">
+          <h4 style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--clr-pink);">Gelbooru</h4>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" id="gelbooru-user-id-input" placeholder="User ID" data-i18n-placeholder="gelbooruUserIdPlaceholder" style="flex: 1; padding: 6px 10px; font-size: 0.8rem; height: 32px;">
+            <input type="text" id="gelbooru-api-key-input" placeholder="API Key / Token" data-i18n-placeholder="gelbooruApiKeyPlaceholder" style="flex: 2; padding: 6px 10px; font-size: 0.8rem; height: 32px;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Safe Search -->
+      <div class="settings-group">
+        <h3 data-i18n="contentFilterTitle">Filtro de Contenido</h3>
+        <div class="toggle-container">
+          <label class="switch">
+            <input type="checkbox" id="safe-search-toggle" checked>
+            <span class="slider round"></span>
+          </label>
+          <span class="toggle-label" data-i18n="safeSearchLabel">Búsqueda Segura (Safe Search)</span>
+        </div>
+        <p class="settings-help" data-i18n="safeSearchHelp">Filtra contenido cuestionable o explícito. Desactivarlo puede mostrar imágenes para adultos.</p>
+      </div>
+
+      <!-- Ajustes de UI -->
+      <div class="settings-group">
+        <h3 data-i18n="visualCustomizationTitle">Personalización Visual</h3>
+        <div class="range-container">
+          <label for="blur-slider"><span data-i18n="blurLabel">Desenfoque de Fondo:</span> <span id="blur-value">5px</span></label>
+          <input type="range" id="blur-slider" min="0" max="25" value="5">
+        </div>
+        <div class="range-container">
+          <label for="opacity-slider"><span data-i18n="opacityLabel">Opacidad del Filtro:</span> <span id="opacity-value">30%</span></label>
+          <input type="range" id="opacity-slider" min="0" max="80" value="30">
+        </div>
+        <div class="select-container">
+          <label for="fit-select" data-i18n="imageFitLabel">Ajuste de Imagen:</label>
+          <select id="fit-select" class="glass-select">
+            <option value="contain" data-i18n="fitOptionContain">Ajustar (Sin recortar)</option>
+            <option value="cover" data-i18n="fitOptionCover">Rellenar (Recortar bordes)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Etiquetas de Búsqueda -->
+      <div class="settings-group">
+        <h3 data-i18n="customTagsTitle">Etiquetas Personalizadas</h3>
+        <input type="text" id="custom-tags-input" placeholder="Ej. kagemori_michiru solo" data-i18n-placeholder="customTagsPlaceholder">
+        <p class="settings-help" data-i18n="customTagsHelp">Por defecto busca a Michiru Kagemori. Puedes añadir etiquetas adicionales separadas por espacio.</p>
+      </div>
+
+      <!-- Limpieza de Caché -->
+      <div class="settings-group">
+        <h3 data-i18n="cacheManagementTitle">Gestión de Caché</h3>
+        <div class="cache-status-row">
+          <span><span data-i18n="cacheCountLabel">Imágenes en caché:</span> <strong id="cache-count">0</strong></span>
+          <button type="button" id="clear-cache-btn" class="danger-btn" data-i18n="clearCacheBtn">Vaciar Caché</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer-footer">
+      <button id="save-settings-btn" class="primary-btn" data-i18n="saveSettingsBtn">Guardar y Aplicar</button>
+    </div>
+  </aside>
+
+  <!-- Modal para Agregar/Editar Accesos Directos -->
+  <dialog id="shortcut-dialog" class="shortcut-dialog glass-panel">
+    <form method="dialog" id="shortcut-form">
+      <h3 id="shortcut-dialog-title" data-i18n="addShortcutTitle">Añadir Acceso Directo</h3>
+      
+      <div class="form-group">
+        <label for="shortcut-name" data-i18n="shortcutNameLabel">Nombre</label>
+        <input type="text" id="shortcut-name" required placeholder="Ej. GitHub" data-i18n-placeholder="shortcutNamePlaceholder">
+      </div>
+      
+      <div class="form-group">
+        <label for="shortcut-url" data-i18n="shortcutUrlLabel">Dirección URL</label>
+        <input type="url" id="shortcut-url" required placeholder="Ej. https://github.com" data-i18n-placeholder="shortcutUrlPlaceholder">
+      </div>
+
+      <div class="dialog-actions">
+        <button type="button" id="delete-shortcut-btn" class="danger-btn hidden" data-i18n="deleteBtn">Eliminar</button>
+        <div class="dialog-actions-right">
+          <button type="button" id="cancel-shortcut-btn" class="secondary-btn" data-i18n="cancelBtn">Cancelar</button>
+          <button type="submit" id="save-shortcut-btn" class="primary-btn" data-i18n="saveBtn">Guardar</button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Script principal de la extensión -->
+  <script src="newtab.js"></script>
+</body>
+</html>
