@@ -62,5 +62,5 @@ Since this is a developer extension, you must load it as an unpacked directory i
 - [newtab.html](newtab.html): Semantic layout of NTP widgets.
 - [newtab.css](newtab.css): Cyberpunk styles, CSS variables, keyframe animations, and media queries.
 - [newtab.js](newtab.js): Real-time clock, search redirection, shortcut storage CRUD, API fetches, cache management, and fade transitions.
-- [_locales/](_locales/): i18n dictionaries for English (`en/messages.json`) and Spanish (`es/messages.json`).
+- [_locales/](_locales/): i18n dictionaries for English and Spanish (will add more languajes soon (you can contribute too)).
 - [icons/](icons/): PNG icons generated from vector assets.
